@@ -44,14 +44,13 @@ export function ensureAuthViaQuery(req: AuthenticatedRequest, res: Response, nex
         return res.status(400).json({ message: 'O parâmetro token deve ser do tipo string' })
     }
 
-    jwtService.verifyToken(token, (err, decoded) => {
-        if (err || typeof decoded === 'undefined') {
-            return res.status(401).json({ message: 'Não autorizado: token inválido' })
-        }
-
-        userService.findByEmail((decoded as JwtPayload).email).then(user => {
-            req.user = user
-            next()
+    jwtService.verifyToken(token, async (err, decoded) => {
+        if (err || typeof decoded === 'undefined') return res.status(401).json({
+          message: 'Não autorizado: token inválido.'
         })
-    })
+    
+        const user = await userService.findByEmail((decoded as JwtPayload).email)
+        req.user = user
+        next()
+      })
 }

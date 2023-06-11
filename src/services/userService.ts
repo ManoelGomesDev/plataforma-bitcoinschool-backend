@@ -30,15 +30,7 @@ function filterLastEpisodesByCourse(episodes: EpisodeInstance[]) {
 export const userService = {
     findByEmail: async (email: string) => {
         const user = await User.findOne({
-            attributes: [
-                'id',
-                ['first_name', 'firstName'],
-                ['last_name', 'lastName'],
-                'phone',
-                'birth',
-                'email',
-                'password'
-            ],
+         
             where: { email }
         })
         return user
@@ -58,17 +50,15 @@ export const userService = {
 
         return updatedUsers[0]
     },
-    updatePassword: async (id: string | number, password: string) => {
-        const [affectedRows, updatedUsers] = await User.update({
-            password
-        }, {
-            where: { id },
-            individualHooks: true,
-            returning: true
+    updatePassword: async (id: number, password: string) => {
+        const [affectedRows, updatedUsers] = await User.update({ password }, {
+          where: { id },
+          returning: true,
+          individualHooks: true
         })
-
+    
         return updatedUsers[0]
-    },
+      },
     getKeepWatchingList: async (id: number) => {
         const userWithWatchingEpisodes = await User.findByPk(id, {
             include: {
