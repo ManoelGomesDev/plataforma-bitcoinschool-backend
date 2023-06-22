@@ -1,7 +1,7 @@
 // src/controllers/likesController.ts
 
 import { Request, Response } from 'express'
-import { likeService } from '../services/LikeService'
+import { likeService } from '../services/likeService'
 import { AuthenticatedRequest } from '../middlewares/auth'
 import { courseService } from '../services/courseService'
 
