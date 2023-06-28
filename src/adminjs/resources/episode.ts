@@ -11,6 +11,9 @@ export const episodeResourceOptions: ResourceOptions = {
     listProperties: ['id', 'name', 'courseId', 'order', 'secondsLong'],
     showProperties: ['id', 'name', 'synopsis', 'courseId', 'order', 'videoUrl', 'secondsLong', 'createdAt', 'updatedAt']
 }
+
+console.log("qualquer ccoisa")
+
 export const episodeResourceFeatures: FeatureType[] = [
     uploadFileFeature({
       provider: {
