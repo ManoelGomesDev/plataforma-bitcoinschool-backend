@@ -12,7 +12,7 @@ export const episodeResourceOptions: ResourceOptions = {
     showProperties: ['id', 'name', 'synopsis', 'courseId', 'order', 'videoUrl', 'secondsLong', 'createdAt', 'updatedAt']
 }
 
-console.log("qualquer ccoisa")
+console.log(path.join(__dirname, '../../../uploads'))
 
 export const episodeResourceFeatures: FeatureType[] = [
     uploadFileFeature({
