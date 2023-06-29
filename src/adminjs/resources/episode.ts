@@ -4,6 +4,7 @@ import fs from 'fs'
 import uploadFileFeature from "@adminjs/upload";
 import { FeatureType, ResourceOptions } from "adminjs";
 import path from "path";
+import UploadProvider from '../../uploadProvider';
 
 export const episodeResourceOptions: ResourceOptions = {
     navigation: 'Catálogo',
@@ -18,13 +19,7 @@ fs.mkdirSync(path.join(__dirname, '../../../uploads'), { recursive: true })
 
 export const episodeResourceFeatures: FeatureType[] = [
     uploadFileFeature({
-      provider: {
-        
-        local: {
-          bucket: path.resolve(__dirname, "uploads"),
-          opts: {}
-        }
-      },
+      provider: new UploadProvider(),
       properties: {
         key: 'videoUrl',
         file: 'uploadVideo'

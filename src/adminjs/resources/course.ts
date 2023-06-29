@@ -1,6 +1,7 @@
 import uploadFileFeature from "@adminjs/upload";
 import { FeatureType, ResourceOptions } from "adminjs";
 import path from "path";
+import UploadProvider from "../../uploadProvider";
 
 export const courseResourceOptions: ResourceOptions = {
     navigation: 'Catálogo',
@@ -12,12 +13,9 @@ export const courseResourceOptions: ResourceOptions = {
 
 export const courseResourceFeatures: FeatureType[] = [
     uploadFileFeature({
-        provider: {
-            local: {
-                bucket: path.join(__dirname, '../../../public'),
-                opts: {}
-            }
-        },
+       
+            provider: new UploadProvider(),
+       
         properties: {
             key: 'thumbnailUrl',
             file: 'uploadThumbnail'
