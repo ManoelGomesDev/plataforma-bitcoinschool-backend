@@ -1,4 +1,4 @@
-import fs, { existsSync } from "fs";
+import fs, { mkdirSync} from "fs";
 import { move } from "fs-extra";
 import path from "path";
 import { UploadedFile } from "adminjs";
@@ -9,10 +9,9 @@ const UPLOADS_DIR = "files"
 
 export default class UploadProvider extends BaseProvider {
   constructor() {
+   
+    fs.mkdirSync(path.join(__dirname, UPLOADS_DIR), { recursive: true })
     super(UPLOADS_DIR);
-    if (!existsSync(UPLOADS_DIR)) {
-      throw new Error(`directory: "${UPLOADS_DIR}" does not exists. Create it before running LocalAdapter`);
-    }
   }
 
   // * Fixed this method because original does rename instead of move and it doesn't work with docker volume
