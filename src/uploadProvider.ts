@@ -5,7 +5,7 @@ import { UploadedFile } from "adminjs";
 import { BaseProvider } from "@adminjs/upload";
 
 
-const UPLOADS_DIR = "files"
+const UPLOADS_DIR = "public"
 
 export default class UploadProvider extends BaseProvider {
   constructor() {
