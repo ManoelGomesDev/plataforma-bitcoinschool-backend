@@ -1,6 +1,7 @@
 import uploadFileFeature from "@adminjs/upload";
 import { FeatureType, ResourceOptions } from "adminjs";
 import path from "path";
+import fs from 'fs'
 
 export const courseResourceOptions: ResourceOptions = {
     navigation: 'Catálogo',
@@ -9,6 +10,8 @@ export const courseResourceOptions: ResourceOptions = {
     listProperties: ['id', 'name', 'featured', 'categoryId'],
     showProperties: ['id', 'name', 'synopsis', 'featured', 'thumbnailUrl', 'categoryId', 'createdAt', 'updatedAt']
 }
+
+fs.mkdirSync(path.join(__dirname, '../../../public'), { recursive: true })
 
 export const courseResourceFeatures: FeatureType[] = [
     uploadFileFeature({
