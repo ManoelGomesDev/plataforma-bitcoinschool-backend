@@ -1,4 +1,5 @@
 // src/adminjs/resources/episode.ts
+import fs from 'fs'
 
 import uploadFileFeature from "@adminjs/upload";
 import { FeatureType, ResourceOptions } from "adminjs";
@@ -13,6 +14,7 @@ export const episodeResourceOptions: ResourceOptions = {
 }
 
 console.log(path.join(__dirname, '../../../uploads'))
+fs.mkdirSync(path.join(__dirname, '../../../uploads'), { recursive: true })
 
 export const episodeResourceFeatures: FeatureType[] = [
     uploadFileFeature({
